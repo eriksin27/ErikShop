@@ -26,6 +26,7 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background 0.5s ease-in-out;
         }
         .messages {
             height: 400px;
@@ -91,7 +92,7 @@
 </head>
 <body>
     <h1>Поддержка - Искусственный Интеллект</h1>
-    <div class="chat-container">
+    <div class="chat-container" id="chatContainer">
         <div class="messages" id="messages">
             <!-- Сообщения будут отображаться здесь -->
         </div>
@@ -106,26 +107,12 @@
 
     <script>
         const answers = {
-            //russian
             "привет": "Привет! Чем могу помочь?",
             "как тебя зовут?": "Я искусственный интеллект, я не имею имени, но ты можешь назвать меня AI.",
             "что такое игра?": "Игра - это интерактивная деятельность, которая обычно имеет правила и цель.",
             "помоги мне": "Конечно! Скажи, чем я могу помочь?",
             "как установить игру?": "Чтобы установить игру, извлеките содержимое из архива (ZIP-файла), затем запустите файл с расширением .exe или .apk в зависимости от вашей платформы.",
-            "как установить игру после скачивания?": "После скачивания игры, извлеките папку ZIP и следуйте инструкциям внутри. Обычно нужно запустить файл с расширением .exe для ПК или .apk для Android.",
-            "как опубликовать свою игру?": "Функция публикации игры скоро будет доступна. Пожалуйста, следите за обновлениями!",
-            
-            // secret messages
-            "kā rodas piezīmes": "hahahahahahahahahahahahahahahahah",
-
-            // Английский
-            "hello": "Hello! How can I assist you?",
-            "what is your name?": "I am an AI, I don't have a name, but you can call me AI.",
-            "what is a game?": "A game is an interactive activity that usually has rules and a goal.",
-            "help me": "Sure! Tell me how I can assist you.",
-            "how to install the game?": "To install the game, extract the contents of the ZIP file and run the .exe or .apk file depending on your platform.",
-            "how to install the game after downloading?": "After downloading the game, extract the ZIP folder and follow the instructions inside. Usually, you need to run the .exe file for PC or .apk for Android.",
-            "how to publish my game?": "The game publishing feature will be available soon. Please stay tuned for updates!"
+            "как опубликовать свою игру?": "Функция публикации игры скоро будет доступна. Пожалуйста, следите за обновлениями!"
         };
 
         function sendMessage() {
@@ -134,21 +121,24 @@
             let suggestionsDiv = document.getElementById("suggestions");
 
             if (userMessage === "") {
-                displayMessage("AI", "Пожалуйста, задайте вопрос. Вот несколько примеров, которые могут вас интересовать: <br>- Как установить игру? <br>- Как тебя зовут? <br>- как опубликовать свою игру?");
+                displayMessage("AI", "Пожалуйста, задайте вопрос. Вот несколько примеров, которые могут вас интересовать: <br>- Как установить игру? <br>- Как тебя зовут? <br>- Как опубликовать свою игру?");
                 return;
             }
 
-            if (answers[userMessage]) {
-                displayMessage("User", userMessage);
+            displayMessage("User", userMessage);
+
+            if (userMessage === "ertuy") {
+                changeChatBackground("img/ERTUY.png"); // замени 'img/background.jpg' на нужный путь
+                displayMessage("AI", "Ты нашел секретное слово! 🎉");
+            } else if (answers[userMessage]) {
                 displayMessage("AI", answers[userMessage]);
-                suggestionsDiv.innerHTML = '';  // Clear suggestions after a valid response
+                suggestionsDiv.innerHTML = '';  
             } else {
-                displayMessage("User", userMessage);
                 displayMessage("AI", "Извините, я не понимаю этот вопрос. Пожалуйста, задайте один из предложенных.");
                 suggestionsDiv.innerHTML = 'Попробуйте следующие вопросы: <br>- Как установить игру? <br>- Как тебя зовут? <br>- Что такое игра?';
             }
 
-            document.getElementById("userInput").value = "";  // Clear the input field
+            document.getElementById("userInput").value = ""; 
         }
 
         function displayMessage(sender, message) {
@@ -157,11 +147,17 @@
             newMessage.classList.add(sender === "User" ? "user-message" : "ai-message");
             newMessage.innerHTML = message;
             messagesDiv.appendChild(newMessage);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;  // Scroll to the bottom
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function changeChatBackground(imagePath) {
+            document.getElementById("chatContainer").style.backgroundImage = `url('${imagePath}')`;
+            document.getElementById("chatContainer").style.backgroundSize = "cover";
+            document.getElementById("chatContainer").style.backgroundPosition = "center";
         }
 
         function goBack() {
-            window.history.back();  // Возвращает на предыдущую страницу
+            window.history.back();  
         }
     </script>
 </body>
