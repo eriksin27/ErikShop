@@ -82,7 +82,7 @@
             display: flex;
             gap: 20px;
         }
-        .support-button, .create-button {
+        .support-button {
             padding: 15px 30px;
             font-size: 16px;
             color: white;
@@ -92,12 +92,38 @@
             border-radius: 5px;
             transition: background 0.3s;
         }
-        .support-button:hover, .create-button:hover {
+        .support-button:hover {
             background: #555;
+        }
+        .profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            display: none;
+        }
+        .profile span {
+            color: white;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
+    <div class="profile">
+        <span id="user-name">Гость</span>
+        <img id="user-avatar" src="" alt="Аватар">
+    </div>
+
     <img src="img/logo.png" height="250px">
     <h1 style="color: white;">ErikShop</h1>
     <h2 style="color: white;">Главная страница.</h2>
@@ -126,5 +152,21 @@
     <div class="bottom-buttons">
         <button class="support-button" onclick="location.href='support.html'">Поддержка</button>
     </div>
+
+    <script>
+        // Получаем сохраненные данные пользователя
+        let username = localStorage.getItem("username");
+        let avatar = localStorage.getItem("avatar");
+
+        if (username) {
+            document.getElementById("user-name").textContent = username;
+        }
+
+        if (avatar) {
+            let avatarImg = document.getElementById("user-avatar");
+            avatarImg.src = avatar;
+            avatarImg.style.display = "block";
+        }
+    </script>
 </body>
 </html>

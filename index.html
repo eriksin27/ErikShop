@@ -46,6 +46,12 @@
         button:hover {
             background-color: #555;
         }
+        #loadingText {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +69,17 @@
         <p>
             Пользователь обязуется принимать все необходимые меры для защиты своего устройства, включая использование антивирусных программ и регулярное обновление системы. Разработчик не несет ответственности за любые убытки, возникающие в результате использования или невозможности использования программы.
         </p>
-        <button onclick="window.location.href='Menu.html'">Я понимаю и соглашаюсь с условиями использования.</button>
+        <button onclick="startTransition()">Я понимаю и соглашаюсь с условиями использования.</button>
+        <p id="loadingText">Переходим к регистрации...</p>
     </div>
+
+    <script>
+        function startTransition() {
+            document.getElementById("loadingText").style.display = "block"; // Показываем надпись
+            setTimeout(function() {
+                window.location.href = 'register.html'; // Через 5 секунд переходим
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
