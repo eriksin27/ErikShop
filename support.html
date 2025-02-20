@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержка</title>
+    <style>
+        body {  
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .chat-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .messages {
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 10px;
+            color: white;
+        }
+        .user-message {
+            color: lightblue;
+            margin-bottom: 10px;
+        }
+        .ai-message {
+            color: lightgreen;
+            margin-bottom: 10px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .input-container input {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #444;
+            background-color: #222;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .input-container button {
+            padding: 10px;
+            width: 15%;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .input-container button:hover {
+            background-color: #777;
+        }
+        .suggestions {
+            color: lightgray;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .back-button {
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Поддержка - Искусственный Интеллект</h1>
+    <div class="chat-container">
+        <div class="messages" id="messages">
+            <!-- Сообщения будут отображаться здесь -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Введите ваш вопрос..." />
+            <button onclick="sendMessage()">Отправить</button>
+        </div>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+
+    <button class="back-button" onclick="goBack()">Назад</button>
+
+    <script>
+        const answers = {
+            //russian
+            "привет": "Привет! Чем могу помочь?",
+            "как тебя зовут?": "Я искусственный интеллект, я не имею имени, но ты можешь назвать меня AI.",
+            "что такое игра?": "Игра - это интерактивная деятельность, которая обычно имеет правила и цель.",
+            "помоги мне": "Конечно! Скажи, чем я могу помочь?",
+            "как установить игру?": "Чтобы установить игру, извлеките содержимое из архива (ZIP-файла), затем запустите файл с расширением .exe или .apk в зависимости от вашей платформы.",
+            "как установить игру после скачивания?": "После скачивания игры, извлеките папку ZIP и следуйте инструкциям внутри. Обычно нужно запустить файл с расширением .exe для ПК или .apk для Android.",
+            "как опубликовать свою игру?": "Функция публикации игры скоро будет доступна. Пожалуйста, следите за обновлениями!",
+            
+            // secret messages
+            "kā rodas piezīmes": "hahahahahahahahahahahahahahahahah",
+
+            // Английский
+            "hello": "Hello! How can I assist you?",
+            "what is your name?": "I am an AI, I don't have a name, but you can call me AI.",
+            "what is a game?": "A game is an interactive activity that usually has rules and a goal.",
+            "help me": "Sure! Tell me how I can assist you.",
+            "how to install the game?": "To install the game, extract the contents of the ZIP file and run the .exe or .apk file depending on your platform.",
+            "how to install the game after downloading?": "After downloading the game, extract the ZIP folder and follow the instructions inside. Usually, you need to run the .exe file for PC or .apk for Android.",
+            "how to publish my game?": "The game publishing feature will be available soon. Please stay tuned for updates!"
+        };
+
+        function sendMessage() {
+            let userMessage = document.getElementById("userInput").value.toLowerCase().trim();
+            let messagesDiv = document.getElementById("messages");
+            let suggestionsDiv = document.getElementById("suggestions");
+
+            if (userMessage === "") {
+                displayMessage("AI", "Пожалуйста, задайте вопрос. Вот несколько примеров, которые могут вас интересовать: <br>- Как установить игру? <br>- Как тебя зовут? <br>- как опубликовать свою игру?");
+                return;
+            }
+
+            if (answers[userMessage]) {
+                displayMessage("User", userMessage);
+                displayMessage("AI", answers[userMessage]);
+                suggestionsDiv.innerHTML = '';  // Clear suggestions after a valid response
+            } else {
+                displayMessage("User", userMessage);
+                displayMessage("AI", "Извините, я не понимаю этот вопрос. Пожалуйста, задайте один из предложенных.");
+                suggestionsDiv.innerHTML = 'Попробуйте следующие вопросы: <br>- Как установить игру? <br>- Как тебя зовут? <br>- Что такое игра?';
+            }
+
+            document.getElementById("userInput").value = "";  // Clear the input field
+        }
+
+        function displayMessage(sender, message) {
+            let messagesDiv = document.getElementById("messages");
+            let newMessage = document.createElement("div");
+            newMessage.classList.add(sender === "User" ? "user-message" : "ai-message");
+            newMessage.innerHTML = message;
+            messagesDiv.appendChild(newMessage);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;  // Scroll to the bottom
+        }
+
+        function goBack() {
+            window.history.back();  // Возвращает на предыдущую страницу
+        }
+    </script>
+</body>
+</html>
