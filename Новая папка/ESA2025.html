@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ertuy Sinema Awards 2025 Участники</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .animation-box {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .animation-box.active {
+            display: block;
+            animation: fadeIn 0.7s ease-in-out;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .video-block {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .video-block video {
+            max-width: 800px;
+        }
+    </style>
+    <script>
+        function showAnimation(name, videoFile) {
+            const box = document.getElementById('animation');
+            box.innerHTML = `
+                <h2>Анимация: ${name}</h2>
+                <video controls autoplay>
+                    <source src="${videoFile}" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            `;
+            box.classList.add('active');
+        }
+    </script>
+</head>
+<body>
+
+    <h1>ESA2025 — Таблица Участников</h1>
+
+    <table>
+        <tr>
+            <th>Место</th>
+            <th>Участник</th>
+            <th>Имя</th>
+            <th>Очки</th>
+            <th>Анимация</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><img src="img/Egor.jpg" alt="Егор"></td>
+            <td>Егор</td>
+            <td>0</td>
+            <td><button onclick="showAnimation('Егор', 'anim1.mp4')">Показать</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><img src="img/Robert.jpg" alt="Роберт"></td>
+            <td>Роберт</td>
+            <td>0</td>
+            <td><button onclick="showAnimation('Роберт', 'anim2.mp4')">Показать</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><img src="img/Eric.jpg" alt="Эрик"></td>
+            <td>Эрик</td>
+            <td>0</td>
+            <td><button onclick="showAnimation('Эрик', 'anim3.mp4')">Показать</button></td>
+        </tr>
+                <tr>
+            <td>4</td>
+            <td><img src="img/Arina.jpg" alt="Арина"></td>
+            <td>Арина
+            </td>
+            <td>0</td>
+            <td><button onclick="showAnimation('Арина', 'anim4.mp4')">Показать</button></td>
+        </tr>
+                <tr>
+            <td>5</td>
+            <td><img src="img/Edvin.jpg" alt="Эдвин"></td>
+            <td>Эдвин</td>
+            <td>0</td>
+            <td><button onclick="showAnimation('Эдвин', 'anim5.mp4')">Показать</button></td>
+        </tr>
+                <tr>
+            <td>6</td>
+            <td><img src="img/Maksim.jpg" alt="Максим"></td>
+            <td>Максим</td>
+            <td>0</td>
+            <td><button onclick="showAnimation('Максим', 'anim6.mp4')">Показать</button></td>
+        </tr>
+    </table>
+
+    <div id="animation" class="animation-box"></div>
+
+    <div class="video-block">
+        <h2>🎬 Полное видео чемпионата</h2>
+        <video controls>
+            <source src="full_video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </div>
+    <h3>видео могут не работать из-за того-что ещё не вышел чемпионат, файл не поддерживается на вашем браузере!</h3>
+    <h1>НАЧАЛО 30 МАЯ 17:00</h1>
+</body>
+</html>

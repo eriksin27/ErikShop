@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Турнирная таблица ЧМ по хоккею</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+      margin: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    img.flag {
+      width: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    /* Зеленая линия слева у первых 4 команд */
+    tr.top4 {
+      border-left: 5px solid green;
+    }
+    tr.top4:hover {
+      cursor: pointer;
+      background-color: #e6ffe6;
+    }
+
+    /* Красная линия слева у 8-го места */
+    tr.zoneOut {
+      border-left: 5px solid red;
+    }
+    tr.zoneOut:hover {
+      cursor: pointer;
+      background-color: #ffe6e6;
+    }
+
+    /* Видео секция */
+    .video-section {
+      margin-top: 40px;
+      border-top: 2px solid #ccc;
+      padding-top: 20px;
+    }
+
+    .video-thumbnails {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .video-thumb {
+      width: 120px;
+      height: 70px;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      border-radius: 5px;
+      position: relative;
+    }
+    .video-thumb:hover {
+      background: #444;
+    }
+
+    /* Иконка "play" на превью */
+    .video-thumb::after {
+      content: "▶";
+      position: absolute;
+      font-size: 20px;
+      right: 8px;
+      top: 8px;
+      opacity: 0.7;
+    }
+
+    /* Видео плеер */
+    video {
+      width: 100%;
+      max-width: 720px;
+      height: 405px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #000;
+      display: block;
+    }
+.fullscreen-btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      user-select: none;
+    }
+    .fullscreen-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Группа A</h2>
+  <table>
+    <tr>
+      <th>Страна</th>
+      <th>Игры</th>
+      <th>Очки</th>
+    </tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/Canada.png" alt="">Канада</td><td>0</td><td>0</td></tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/German.webp" alt="">Германия</td><td>0</td><td>0</td></tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/Sweden.png" alt="">Швеция</td><td>0</td><td>0</td></tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/Swecarija.png" alt="">Швейцария</td><td>0</td><td>0</td></tr>
+    <tr><td><img class="flag" src="img/Finland.webp" alt="">Финляндия</td><td>0</td><td>0</td></tr>
+    <tr><td><img class="flag" src="img/Norwey.webp" alt="">Норвегия</td><td>0</td><td>0</td></tr>
+    <tr><td><img class="flag" src="img/Denmark.webp" alt="">Дания</td><td>0</td><td>0</td></tr>
+    <tr class="zoneOut" title="Зона вылета"><td><img class="flag" src="img/France.png" alt="">Франция</td><td>0</td><td>0</td></tr>
+  </table>
+
+  <h2>Группа B</h2>
+  <table>
+    <tr>
+      <th>Страна</th>
+      <th>Игры</th>
+      <th>Очки</th>
+    </tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/USA.webp" alt="">США</td><td>0</td><td>0</td></tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/Cehija.webp" alt="">Швеция</td><td>0</td><td>0</td></tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/Ertuy.png" alt="">Эрти</td><td>0</td><td>0</td></tr>
+    <tr class="top4" title="1/4 Финала"><td><img class="flag" src="img/Latvia.webp" alt="">Латвия</td><td>0</td><td>0</td></tr>
+    <tr><td><img class="flag" src="img/Slovakia.png" alt="">Словакия</td><td>0</td><td>0</td></tr>
+    <tr><td><img class="flag" src="img/Kah.png" alt="">Казахстан</td><td>0</td><td>0</td></tr>
+    <tr><td><img class="flag" src="img/france.png" alt="">Франция</td><td>0</td><td>0</td></tr>
+    <tr class="zoneOut" title="Зона вылета"><td><img class="flag" src="img/Slovenija.png" alt="">Словения</td><td>0</td><td>0</td></tr>
+  </table>
+
+  <div class="video-section">
+    <h2>Видео обзоры</h2>
+    <div class="video-thumbnails">
+      <div class="video-thumb" data-video-src="videos\video1.mp4">Видео 1</div>
+      <div class="video-thumb" data-video-src="videos/video2.mp4">Видео 2</div>
+      <div class="video-thumb" data-video-src="videos/video3.mp4">Видео 3</div>
+    </div>
+    <video id="videoPlayer" controls preload="none" poster="videos/poster1.jpg">
+      <source src="videos/video1.mp4" type="video/mp4" />
+      Ваш браузер не поддерживает видео.
+    </video>
+</body>
+</html>
